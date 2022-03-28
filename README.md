@@ -1,6 +1,9 @@
-# Welcome to Remix!
+# Welcome
 
-- [Remix Docs](https://remix.run/docs)
+This app use cookie to save user preferences as chosen language and remix-i18next to translate the page using JSON resources. So you can see in this app:
+- How to [create/read cookie](https://remix.run/docs/en/v1/api/remix#using-cookies) using [Remix](https://remix.run/docs)
+- How to use [remix-i18next](https://react.i18next.com/latest/ssr#using-remix) and [override getLocale](./app/i18n/i18n.server.ts#L15) to read the custom cookie.
+
 
 ## Development
 
