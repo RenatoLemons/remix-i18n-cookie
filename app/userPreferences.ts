@@ -13,8 +13,13 @@ const readCookie = async (request: Request) => {
 }
 
 /** Serializes the given user preferences to a string and returns the Set-Cookie header. */
-const serialize = async (value: UserPreferences) => {
-    return await userPreferencesCookie.serialize(value);
+const serialize = async (value: Partial<UserPreferences>) => {
+    const nextCookie: UserPreferences = {
+        ...userPreferences.cookie,
+        ...value
+    };
+
+    return await userPreferencesCookie.serialize(nextCookie);
 }
 
 const userPreferencesCookie = createCookie("user-preferences", {

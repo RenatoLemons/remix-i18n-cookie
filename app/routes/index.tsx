@@ -16,16 +16,13 @@ export async function action({ request }) {
   await userPreferences.readCookie(request);
   const bodyParams = await request.formData();
 
-  const nextCookie: UserPreferences = {
-    ...userPreferences.cookie,
-    ...{
-      lang: bodyParams.get("language")
-    }
+  const nextLanguage: Partial<UserPreferences> = {
+    lang: bodyParams.get("language")
   };
 
   return redirect("/", {
     headers: {
-      "Set-Cookie": await userPreferences.serialize(nextCookie),
+      "Set-Cookie": await userPreferences.serialize(nextLanguage),
     },
   });
 }
